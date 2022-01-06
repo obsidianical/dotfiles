@@ -16,3 +16,5 @@
 - link:
     ~/.config/nvim:
       path: config/nvim
+    ~/.zshrc:
+      path: config/zsh/zshrc
