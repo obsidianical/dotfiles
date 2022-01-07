@@ -21,5 +21,12 @@ if ! zgenom saved; then
   zgenom ohmyzsh plugins/colored-man-pages
   zgenom ohmyzsh plugins/zsh-interactive-cd
   zgenom load zsh-users/zsh-syntax-highlighting
+  zgenom load desyncr/auto-ls
+  zgenom load zpm-zsh/colors
+  zgenom load hlissner/zsh-autopair
+  zgenom load jeffreytse/zsh-vi-mode
+  zgenom load zpm-zsh/ls
+  zgenom load zpm-zsh/tmux
+  zgenom load bric3/nice-exit-code
   zgenom save
 fi
