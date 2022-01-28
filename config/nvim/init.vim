@@ -47,6 +47,9 @@ Plug 'scrooloose/syntastic'
 Plug 'preservim/tagbar'
 Plug 'rust-lang/rust.vim'
 
+" TeX
+Plug 'lervag/vimtex'
+
 " Optional dependencies
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -60,24 +63,32 @@ call plug#end()
 
 colorscheme gruvbox
 
+" make terminal normal mode ez
 tnoremap <Esc> <C-\><C-n>
+
+" turn nerdtree off and on again
 nmap <C-n> :NERDTreeToggle<CR>
 
+" commenting
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 
+" more comfortable remaps
 nmap H _
 vmap H _
 
 nmap L $
 vmap L $
 
+" TeX config
+let g:vimtex_view_general_viewer = 'okular' 
+
 syntax enable
 filetype plugin indent on
 
 " open NERDTree automatically
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * NERDTree
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * NERDTree
 
 let g:NERDTreeGitStatusWithFlags = 1
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
