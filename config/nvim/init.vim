@@ -38,6 +38,8 @@ Plug 'andweeb/presence.nvim'
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 
 Plug 'itchyny/lightline.vim'
+Plug 'taohexxx/lightline-buffer'
+Plug 'shinchu/lightline-gruvbox.vim'
 
 " rust-tools
 Plug 'neovim/nvim-lspconfig'
@@ -86,9 +88,73 @@ let g:vimtex_view_general_viewer = 'okular'
 syntax enable
 filetype plugin indent on
 
+" Lightline config
+set hidden  " allow buffer switching without saving
+set showtabline=2  " always show tabline
+" use lightline-buffer in lightline
+let g:lightline = {
+    \ 'colorscheme': 'gruvbox',
+    \ 'tabline': {
+    \   'left': [ [ 'bufferinfo' ],
+    \             [ 'separator' ],
+    \             [ 'bufferbefore', 'buffercurrent', 'bufferafter' ], ],
+    \   'right': [ [ 'close' ], ],
+    \ },
+    \ 'component_expand': {
+    \   'buffercurrent': 'lightline#buffer#buffercurrent',
+    \   'bufferbefore': 'lightline#buffer#bufferbefore',
+    \   'bufferafter': 'lightline#buffer#bufferafter',
+    \ },
+    \ 'component_type': {
+    \   'buffercurrent': 'tabsel',
+    \   'bufferbefore': 'raw',
+    \   'bufferafter': 'raw',
+    \ },
+    \ 'component_function': {
+    \   'bufferinfo': 'lightline#buffer#bufferinfo',
+    \ },
+    \ 'component': {
+    \   'separator': '',
+    \ },
+    \ }
+" remap arrow keys
+nnoremap <Left> :bprev<CR>
+nnoremap <Right> :bnext<CR>
+" lightline-buffer ui settings
+" replace these symbols with ascii characters if your environment does not support unicode
+let g:lightline_buffer_logo = ' '
+let g:lightline_buffer_readonly_icon = ''
+let g:lightline_buffer_modified_icon = '✭'
+let g:lightline_buffer_git_icon = ' '
+let g:lightline_buffer_ellipsis_icon = '..'
+let g:lightline_buffer_expand_left_icon = '◀ '
+let g:lightline_buffer_expand_right_icon = ' ▶'
+let g:lightline_buffer_active_buffer_left_icon = ''
+let g:lightline_buffer_active_buffer_right_icon = ''
+let g:lightline_buffer_separator_icon = '  '
+" enable devicons, only support utf-8
+" require <https://github.com/ryanoasis/vim-devicons>
+let g:lightline_buffer_enable_devicons = 1
+" lightline-buffer function settings
+let g:lightline_buffer_show_bufnr = 1
+" :help filename-modifiers
+let g:lightline_buffer_fname_mod = ':t'
+" hide buffer list
+let g:lightline_buffer_excludes = ['vimfiler']
+" max file name length
+let g:lightline_buffer_maxflen = 30
+" max file extension length
+let g:lightline_buffer_maxfextlen = 3
+" min file name length
+let g:lightline_buffer_minflen = 16
+" min file extension length
+let g:lightline_buffer_minfextlen = 3
+" reserve length for other component (e.g. info, close)
+let g:lightline_buffer_reservelen = 20
+
 " open NERDTree automatically
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * NERDTree
 
 let g:NERDTreeGitStatusWithFlags = 1
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
@@ -194,7 +260,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Or use `complete_info` if your vim support it, like:
 " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-GameSettings
+" GameSettings
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
