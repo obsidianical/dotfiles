@@ -18,3 +18,5 @@
       path: config/nvim
     ~/.zshrc:
       path: config/zsh/zshrc
+    ~/.config/i3/config:
+      path: config/i3wm/config

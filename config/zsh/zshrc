@@ -2,7 +2,7 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=10000
-bindkey -v
+#
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/gabriel/.zshrc'
@@ -11,13 +11,14 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+export TMUX_AUTOSTART=false
 # zgenom
 source "${HOME}/.zgenom/zgenom.zsh"
 
 if ! zgenom saved; then
   zgenom ohmyzsh
   zgenom ohmyzsh plugins/git
-  zgenom ohmyzsh plugins/sudo
+  #zgenom ohmyzsh plugins/sudo
   zgenom ohmyzsh plugins/colored-man-pages
   zgenom ohmyzsh plugins/zsh-interactive-cd
   zgenom load zsh-users/zsh-syntax-highlighting
@@ -30,3 +31,9 @@ if ! zgenom saved; then
   zgenom load bric3/nice-exit-code
   zgenom save
 fi
+
+alias v=nvim
+
+bindkey -v
+
+neofetch
