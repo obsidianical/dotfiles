@@ -39,11 +39,15 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec konsole
 
 # kill focused window
 bindsym $mod+Shift+q kill
+
+# screenshot tools
+bindsym $mod+Shift+s exec "flameshot gui -c -p $HOME/Pictures/screenshots"
+bindsym $mod+Shift+w exec "$HOME/dotfiles/config/i3wm/window_screenshot_flameshot.sh"
+bindsym $mod+Shift+a exec "flameshot screen -c -p $HOME/Pictures/screenshots"
 
 # start rofi
 bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun,ssh -theme gruvbox-dark-soft -font 'Montserrat 12' -show combi"
@@ -169,8 +173,19 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# exec_always "setxkbmap -layout de -variant mac -option ctrl:nocaps -option compose:lctrl"
+# exec "xkeysnail $HOME/xkeysnail-cfg.py"
+exec "xkeysnail $HOME/dotfiles/config/xkeysnail/xkeysnail-cfg.py & sleep 4 && setxkbmap -layout de -variant mac"
+exec "yakuake"
+exec "volumeicon"
+exec "mate-power-manager"
+
+exec_always --no-startup-id "$HOME/Documents/repos/i3-autodisplay/i3-autodisplay"
 exec_always --no-startup-id "feh --bg-scale ~/Pictures/wallpaper.jpg"
-exec_always "setxkbmap -layout de -variant mac -option ctrl:nocaps -option compose:lctrl"
+
+# Only for main pc, hopefully doesnt break stuff on other devices...
+exec_always 'xinput set-prop 17 "libinput Tapping Enabled" 1'
+exec_always 'xinput set-prop 17 "libinput Click Method Enabled" 1, 0'
 
 ########################################################################################################################################################################################################
 #### TODO Fix multi monitor setups and handle layout changes!!!!!!!!!!!!!!!
@@ -189,7 +204,7 @@ workspace_auto_back_and_forth yes
 
 # assign windows to workspaces
 assign [class="discord"] $ws1
-assign [class="navigator librewolf"] $ws2
+assign [class="Navigator"] $ws2
 
 # color theme
 # class				border	backgr.	text	indicator	child_border

@@ -4,9 +4,6 @@
  
 nnoremap <Down> <C-W>j
 nnoremap <Up> <C-W>k
-nnoremap <Left> <C-W>h
-nnoremap <Right> <C-W>l
-
 
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
@@ -87,6 +84,47 @@ let g:vimtex_view_general_viewer = 'okular'
 
 syntax enable
 filetype plugin indent on
+
+" Emacs Insert mode/command mode hotkeys
+" movement
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
+inoremap <C-p> <Up>
+inoremap <C-n> <Down>
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
+inoremap <C-e> <C-o>$
+inoremap <C-a> <C-o>_
+cnoremap <C-e> <C-o>$
+cnoremap <C-a> <C-o>_
+
+inoremap <M-f> <C-Right>
+inoremap <M-b> <C-Left>
+inoremap <M-e> <C-o>)
+inoremap <M-a> <C-o>(
+cnoremap <M-f> <C-Right>
+cnoremap <M-b> <C-Left>
+cnoremap <M-e> <C-o>)
+cnoremap <M-a> <C-o>(
+
+inoremap <M-<> <Esc>ggi
+inoremap <M->> <Esc>Gi
+cnoremap <M-<> <Esc>ggi
+cnoremap <M->> <Esc>Gi
+
+" editing
+inoremap <C-d> <Del>
+inoremap <M-BS> <C-o>db
+inoremap <M-d> <C-o>de
+cnoremap <C-d> <Del>
+cnoremap <M-BS> <C-o>db
+cnoremap <M-d> <C-o>de
+
+inoremap <C-s> <C-o>/
+inoremap <C-r> <C-o>?
 
 " Lightline config
 set hidden  " allow buffer switching without saving
