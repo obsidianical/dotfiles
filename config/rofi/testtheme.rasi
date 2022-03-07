@@ -1,0 +1,38 @@
+* {
+	bg-pri: #3d3836;
+	bg-sec: #1d2021;
+	bg-tri: #282828;
+	txt-pri: #ebdbb2;
+	txt-sec: #d5c4a1;
+}
+
+#window {
+	location: north;
+	anchor: north;
+	transparency: "screenshot";
+	children: [mainbox];
+}
+
+#mainbox {
+	children: [entry, message, listview];
+}
+
+#entry {
+	expand: false;
+}
+
+#listview {}
+
+#message {}
+
+#message normal normal {}
+#message normal active {}
+#message normal urgent {}
+
+#message alternate normal {}
+#message alternate active {}
+#message alternate urgent {}
+
+#message selected normal {}
+#message selected active {}
+#message selected urgent {}

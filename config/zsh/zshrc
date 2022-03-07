@@ -37,3 +37,4 @@ alias v=nvim
 bindkey -v
 
 neofetch
+alias bdin="betterdiscordctl install && killall Discord && Discord & disown"

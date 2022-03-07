@@ -50,7 +50,7 @@ bindsym $mod+Shift+w exec "$HOME/dotfiles/config/i3wm/window_screenshot_flamesho
 bindsym $mod+Shift+a exec "flameshot screen -c -p $HOME/Pictures/screenshots"
 
 # start rofi
-bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun,ssh -theme gruvbox-dark-soft -font 'Montserrat 12' -show combi"
+bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun,ssh -show combi"
 
 # change focus
 bindsym $mod+h focus left
@@ -102,8 +102,6 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+c focus child
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
 set $ws1 "1: Comms"
 set $ws2 "2: Browser"
 set $ws3 "3"
@@ -115,7 +113,6 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-# switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
@@ -127,7 +124,6 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
-# move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
@@ -139,33 +135,22 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym $mod+h resize shrink width 10 px or 10 ppt
         bindsym $mod+j resize grow height 10 px or 10 ppt
         bindsym $mod+k resize shrink height 10 px or 10 ppt
         bindsym $mod+l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
@@ -173,30 +158,24 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# exec_always "setxkbmap -layout de -variant mac -option ctrl:nocaps -option compose:lctrl"
-# exec "xkeysnail $HOME/xkeysnail-cfg.py"
-exec "xkeysnail $HOME/dotfiles/config/xkeysnail/xkeysnail-cfg.py & sleep 4 && setxkbmap -layout de -variant mac"
-exec "yakuake"
-exec "volumeicon"
-exec "mate-power-manager"
+exec_always "xkeysnail $HOME/dotfiles/config/xkeysnail/xkeysnail-cfg.py & sleep 4 && setxkbmap -layout de -variant mac"
+exec "yakuake &"
+exec "volumeicon &"
+exec "mate-power-manager &"
 
-exec_always --no-startup-id "$HOME/Documents/repos/i3-autodisplay/i3-autodisplay"
-exec_always --no-startup-id "feh --bg-scale ~/Pictures/wallpaper.jpg"
+exec_always --no-startup-id "$HOME/Documents/repos/i3-autodisplay/i3-autodisplay &"
+exec_always --no-startup-id "feh --bg-scale ~/Pictures/wallpaper.jpg &"
 
 # Only for main pc, hopefully doesnt break stuff on other devices...
-exec_always 'xinput set-prop 17 "libinput Tapping Enabled" 1'
-exec_always 'xinput set-prop 17 "libinput Click Method Enabled" 1, 0'
+exec_always --no-startup-id 'xinput set-prop "bcm5974" "libinput Tapping Enabled" 1 &'
+exec_always --no-startup-id 'xinput set-prop "bcm5974" "libinput Click Method Enabled" 1, 0 &'
 
-########################################################################################################################################################################################################
-#### TODO Fix multi monitor setups and handle layout changes!!!!!!!!!!!!!!!
-########################################################################################################################################################################################################
-#exec_always "~/.screenlayout/ext-monitor.sh"
-########################################################################################################################################################################################################
-
+# notification daemon, discord etc break without it
 exec_always --no-startup-id "/usr/bin/dunst &"
-exec --no-startup-id xcape
+#exec --no-startup-id xcape
 
 focus_follows_mouse no
+
 hide_edge_borders smart
 
 # go back with same key of workspace
@@ -204,12 +183,12 @@ workspace_auto_back_and_forth yes
 
 # assign windows to workspaces
 assign [class="discord"] $ws1
-assign [class="Navigator"] $ws2
+assign [class="LibreWolf"] $ws2
 
 # color theme
-# class				border	backgr.	text	indicator	child_border
+# class					border	backgr.	text	indicator	child_border
 client.focused			#d65d0e	#282828	#ebdbb2	#a89984		#7c6f64
-client.focused_inactive		#504945	#1d2021	#d5c4a1	#664c54		#665c54
+client.focused_inactive	#504945	#1d2021	#d5c4a1	#664c54		#665c54
 client.unfocused		#3c3836	#1d2021	#bdae93	#504945		#504945
 client.urgent			#cc241d	#9d0006	#ebdbb2	#fb4934		#7c6f64
 client.placeholder		#00ff00	#1d2021	#928374	#00ff00		#3c3836
@@ -217,18 +196,20 @@ client.background		#1d2021
 
 force_display_urgency_hint 1250 ms
 
+for_window [class=".*"] title_format "<b>%title</b> %class"
+
 # ref https://i3wm.org/docs/userguide.html#status_command for later custom bar
 
 bar {
-	status_command i3status
-	font pango:FiraCode Nerd Font 9
-	strip_workspace_numbers no
-	position top
-	tray_output primary
+	status_command 			i3status
+	font 					pango:FiraCode Nerd Font 9
+	strip_workspace_numbers	no
+	position 				top
+	tray_output 			primary
 	colors {
-		background	#282828
-		statusline	#ebdbb2
-		separator	#bdae03
+		background			#282828
+		statusline			#ebdbb2
+		separator			#bdae03
 		# color class		border	bg		text
 		focused_workspace	#d65d0e #3c3836 #ebdbb2
 		active_workspace	#d65d0e #3c3836 #ebdbb2

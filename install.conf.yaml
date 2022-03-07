@@ -22,3 +22,5 @@
       path: config/i3wm/config
     ~/.config/i3-autodisplay/config.yml:
       path: config/i3wm/i3-autodisplay-cfg.yml
+    ~/.config/rofi/config.rasi:
+      path: config/rofi/config.rasi
