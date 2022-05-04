@@ -61,6 +61,7 @@ Plug 'mfussenegger/nvim-dap'
 call plug#end()
 
 colorscheme gruvbox
+set fdm=marker
 
 " make terminal normal mode ez
 tnoremap <Esc> <C-\><C-n>

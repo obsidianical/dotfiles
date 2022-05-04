@@ -36,5 +36,41 @@ alias v=nvim
 
 bindkey -v
 
-neofetch
+alias termsize='echo "width: $(tput cols)\nheight: $(tput lines)"'
+alias batstate='echo "Charge state: $(cat /sys/class/power_supply/BAT0/capacity)%"'
+alias clear='clear;neofetch'
 alias bdin="betterdiscordctl install && killall Discord && Discord & disown"
+alias upg='paru -Syu --skipreview --noconfirm && flatpak upgrade && rustup upgrade'
+
+alias grepo="cd $HOME/Documents/repos && ls"
+alias gdot="cd $HOME/dotfiles && ls"
+alias vgdot="cd $HOME/dotfiles && v"
+
+alias slol="while true;do \clear;sl --help | lolcat;done;"
+
+# localhost.run
+alias lhr="ssh -R 80:localhost:8080 nokey@localhost.run"
+alias sshrpi="ssh jade@192.168.178.111"
+
+# cargo
+alias cr="cargo run"
+alias cb="cargo build"
+alias cf="cargo fmt"
+alias cfx="cargo fix"
+alias cl="cargo clippy"
+alias cbr="cargo build --release"
+alias msda1="sudo mount /dev/sda1 /mnt/portable-mass-storage"
+
+# file endings
+alias -s {pdf,PDF}="evince"
+alias -s {jpg,JPG,png,PNG}="kitty +kitten icat"
+alias -s {ods,ODS,odt,ODT,odp,ODP,doc,DOC,docx,DOCX,xls,XLS,xlsx,XLSX,xlsm,XLSM,ppt,PPT,pptx,PPTX,csv,CSV}='libreoffice'
+alias -s {html,HTML}="librewolf"
+alias -s {mp4,MP4,mov,MOV,mkv,MKV}='vlc'
+alias -s {zip,ZIP,war,WAR}="unzip -l"
+alias -s {jar,JAR}="java -jar"
+alias -s gz="tar -tf"
+alias -s {tgz,TGZ}="tar -tf"
+
+# r/unixporn enjoyer moment
+neofetch

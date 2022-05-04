@@ -28,6 +28,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+exec picom --experimental-backend
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -39,13 +41,13 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec konsole
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # screenshot tools
-bindsym $mod+Shift+s exec "flameshot gui -c -p $HOME/Pictures/screenshots"
+bindsym $mod+s exec "flameshot gui -c -p $HOME/Pictures/screenshots"
 bindsym $mod+Shift+w exec "$HOME/dotfiles/config/i3wm/window_screenshot_flameshot.sh"
 bindsym $mod+Shift+a exec "flameshot screen -c -p $HOME/Pictures/screenshots"
 
@@ -86,7 +88,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+#bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -158,17 +160,20 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-exec_always "xkeysnail $HOME/dotfiles/config/xkeysnail/xkeysnail-cfg.py & sleep 4 && setxkbmap -layout de -variant mac"
-exec "yakuake &"
+#exec_always "xkeysnail $HOME/dotfiles/config/xkeysnail/xkeysnail-cfg.py & sleep 4 && setxkbmap -layout de -variant mac"
+exec_always "xkeysnail $HOME/dotfiles/config/xkeysnail/xkeysnail-cfg.py"
+exec_always "sleep 4 && setxkbmap -layout us -variant altgr-intl"
+#exec "yakuake &"
 exec "volumeicon &"
 exec "mate-power-manager &"
+exec "nm-applet"
 
 exec_always --no-startup-id "$HOME/Documents/repos/i3-autodisplay/i3-autodisplay &"
 exec_always --no-startup-id "feh --bg-scale ~/Pictures/wallpaper.jpg &"
 
 # Only for main pc, hopefully doesnt break stuff on other devices...
-exec_always --no-startup-id 'xinput set-prop "bcm5974" "libinput Tapping Enabled" 1 &'
-exec_always --no-startup-id 'xinput set-prop "bcm5974" "libinput Click Method Enabled" 1, 0 &'
+exec_always --no-startup-id 'xinput set-prop "bcm5974" "libinput Tapping Enabled" 1'
+exec_always --no-startup-id 'xinput set-prop "bcm5974" "libinput Click Method Enabled" 0, 1'
 
 # notification daemon, discord etc break without it
 exec_always --no-startup-id "/usr/bin/dunst &"
@@ -183,22 +188,27 @@ workspace_auto_back_and_forth yes
 
 # assign windows to workspaces
 assign [class="discord"] $ws1
-assign [class="LibreWolf"] $ws2
+assign [class="librewolf"] $ws2
 
 # color theme
 # class					border	backgr.	text	indicator	child_border
-client.focused			#d65d0e	#282828	#ebdbb2	#a89984		#7c6f64
+client.focused			#504945	#282828	#ebdbb2	#504945		#7c6f64
 client.focused_inactive	#504945	#1d2021	#d5c4a1	#664c54		#665c54
 client.unfocused		#3c3836	#1d2021	#bdae93	#504945		#504945
 client.urgent			#cc241d	#9d0006	#ebdbb2	#fb4934		#7c6f64
 client.placeholder		#00ff00	#1d2021	#928374	#00ff00		#3c3836
 client.background		#1d2021
 
-force_display_urgency_hint 1250 ms
+#force_display_urgency_hint 1250 ms
 
-for_window [class=".*"] title_format "<b>%title</b> %class"
+#for_window [class=".*"] title_format "<b>%title</b> %class"
 
 # ref https://i3wm.org/docs/userguide.html#status_command for later custom bar
+
+for_window [class="^.*"] border pixel 0
+
+smart_gaps on
+gaps inner 15
 
 bar {
 	status_command 			i3status
@@ -211,7 +221,7 @@ bar {
 		statusline			#ebdbb2
 		separator			#bdae03
 		# color class		border	bg		text
-		focused_workspace	#d65d0e #3c3836 #ebdbb2
-		active_workspace	#d65d0e #3c3836 #ebdbb2
+		focused_workspace	#7c6f64 #3c3836 #ebdbb2
+		active_workspace	#7c6f64 #3c3836 #ebdbb2
 	}
 }

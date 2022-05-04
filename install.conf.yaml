@@ -24,3 +24,5 @@
       path: config/i3wm/i3-autodisplay-cfg.yml
     ~/.config/rofi/config.rasi:
       path: config/rofi/config.rasi
+    ~/.config/picom.conf:
+      path: config/picom.conf
