@@ -38,7 +38,10 @@ bindsym $mod+Shift+w exec "$HOME/dotfiles/config/i3wm/window_screenshot_flamesho
 bindsym $mod+Shift+a exec "flameshot screen -c -p $HOME/Pictures/screenshots"
 
 # start rofi
-bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun,ssh -show combi"
+bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,ssh -show combi"
+bindsym $mod+space exec --no-startup-id "rofi -show window"
+bindsym $mod+m exec --no-startup-id "=" # rofi/dmenu calculator https://github.com/barbuk/menu-qalc
+bindsym $mod+i exec --no-startup-id "rofimoji -f alchemical_symbols emojis braille_patterns box_drawing chess_symbols emoticons geometric_shapes gothic greek_extended math mathematical_alphanumeric_symbols mathematical_operators miscellaneous_symbols miscellaneous_mathematical_symbols-a miscellaneous_mathematical_symbols-b miscellaneous_symbols_and_arrows miscellaneous_symbols_and_pictographs miscellaneous_technical modi modifier_tone_letters musical_symbols nerd_font number_forms shorthand_format_controls specials variation_selectors vertical_forms -a copy"
 
 # change focus
 bindsym $mod+h focus left
@@ -81,9 +84,6 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
 # focus the parent container
 bindsym $mod+a focus parent
 
@@ -125,7 +125,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec --no-startup-id "$HOME/dotfiles/config/i3wm/desktop_ctl.sh"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -148,7 +148,6 @@ bindsym $mod+r mode "resize"
 
 exec_always "xkeysnail $HOME/dotfiles/config/xkeysnail/xkeysnail-cfg.py"
 exec_always "sleep 4 && setxkbmap -layout us -variant altgr-intl"
-#exec "yakuake &"
 exec "volumeicon &"
 exec "mate-power-manager &"
 exec "nm-applet"
