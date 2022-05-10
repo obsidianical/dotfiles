@@ -36,6 +36,8 @@ alias v=nvim
 
 bindkey -v
 
+alias lock="i3lock-fancy"
+
 alias termsize='echo "width: $(tput cols)\nheight: $(tput lines)"'
 alias batstate='echo "Charge state: $(cat /sys/class/power_supply/BAT0/capacity)%"'
 alias clear='clear;neofetch'

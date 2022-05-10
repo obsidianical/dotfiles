@@ -10,27 +10,12 @@
 
 set $mod Mod4
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
 font pango:Monsterrat 8
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
 
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
-
 exec picom --experimental-backend
 
-# Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
@@ -47,6 +32,7 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 
 # screenshot tools
+bindsym $mod+t exec "$HOME/dotfiles/config/i3wm/text_screenshot.sh"
 bindsym $mod+s exec "flameshot gui -c -p $HOME/Pictures/screenshots"
 bindsym $mod+Shift+w exec "$HOME/dotfiles/config/i3wm/window_screenshot_flameshot.sh"
 bindsym $mod+Shift+a exec "flameshot screen -c -p $HOME/Pictures/screenshots"
@@ -160,13 +146,14 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-#exec_always "xkeysnail $HOME/dotfiles/config/xkeysnail/xkeysnail-cfg.py & sleep 4 && setxkbmap -layout de -variant mac"
 exec_always "xkeysnail $HOME/dotfiles/config/xkeysnail/xkeysnail-cfg.py"
 exec_always "sleep 4 && setxkbmap -layout us -variant altgr-intl"
 #exec "yakuake &"
 exec "volumeicon &"
 exec "mate-power-manager &"
 exec "nm-applet"
+
+exec_always --no-startup-id "killall polybar ; polybar"
 
 exec_always --no-startup-id "$HOME/Documents/repos/i3-autodisplay/i3-autodisplay &"
 exec_always --no-startup-id "feh --bg-scale ~/Pictures/wallpaper.jpg &"
@@ -177,9 +164,8 @@ exec_always --no-startup-id 'xinput set-prop "bcm5974" "libinput Click Method En
 
 # notification daemon, discord etc break without it
 exec_always --no-startup-id "/usr/bin/dunst &"
-#exec --no-startup-id xcape
 
-focus_follows_mouse no
+focus_follows_mouse yes
 
 hide_edge_borders smart
 
@@ -188,6 +174,7 @@ workspace_auto_back_and_forth yes
 
 # assign windows to workspaces
 assign [class="discord"] $ws1
+assign [class="nheko"] $ws1
 assign [class="librewolf"] $ws2
 
 # color theme
@@ -199,29 +186,7 @@ client.urgent			#cc241d	#9d0006	#ebdbb2	#fb4934		#7c6f64
 client.placeholder		#00ff00	#1d2021	#928374	#00ff00		#3c3836
 client.background		#1d2021
 
-#force_display_urgency_hint 1250 ms
+for_window [class="^.*"] border pixel 2.5
 
-#for_window [class=".*"] title_format "<b>%title</b> %class"
-
-# ref https://i3wm.org/docs/userguide.html#status_command for later custom bar
-
-for_window [class="^.*"] border pixel 0
-
-smart_gaps on
+gaps top 24
 gaps inner 15
-
-bar {
-	status_command 			i3status
-	font 					pango:FiraCode Nerd Font 9
-	strip_workspace_numbers	no
-	position 				top
-	tray_output 			primary
-	colors {
-		background			#282828
-		statusline			#ebdbb2
-		separator			#bdae03
-		# color class		border	bg		text
-		focused_workspace	#7c6f64 #3c3836 #ebdbb2
-		active_workspace	#7c6f64 #3c3836 #ebdbb2
-	}
-}

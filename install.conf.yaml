@@ -26,3 +26,5 @@
       path: config/rofi/config.rasi
     ~/.config/picom.conf:
       path: config/picom.conf
+    ~/.config/polybar/config.ini:
+      path: config/polybar/config.ini

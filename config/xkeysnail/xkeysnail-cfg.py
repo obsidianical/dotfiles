@@ -31,15 +31,7 @@ define_conditional_multipurpose_modmap(lambda wm_class, device_name: device_name
     Key.CAPSLOCK: [Key.ESC, Key.RIGHT_CTRL],
 })
 
-# define_keymap(lambda wm_class, device_name: device_name.startswith("Apple"), {
-    # K("y"): K("z"),
-    # K("z"): K("y"),
-# }, "zy swap apl")
-
-
-# Keybindings for Firefox/Chrome
 define_keymap(re.compile("Firefox|Google-chrome|LibreWolf|Chromium"), {
-    # Ctrl+Alt+j/k to switch next/previous tab
     K("C-M-k"): K("C-TAB"),
     K("C-M-j"): K("C-Shift-TAB"),
 }, "Firefox and Chrome")
@@ -63,65 +55,32 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "konsole", "cool-retro-
     # Delete
     K("C-d"): [K("delete"), set_mark(False)],
     K("M-d"): [K("C-delete"), set_mark(False)],
-        # Page up/down
-    # K("M-v"): with_mark(K("page_up")),
-    # K("C-v"): with_mark(K("page_down")),
-    # Copy
-    # K("C-w"): [K("C-x"), set_mark(False)],
-    # K("M-w"): [K("C-c"), set_mark(False)],
-    # K("C-z"): [K("C-v"), set_mark(False)],
-    # Enter
-    # K("C-m"): K("enter"),
-    # Newline without going there
-    # K("C-o"): [K("enter"), K("left")],
-    # Mark
-    # K("C-space"): set_mark(True),
-    # K("C-M-space"): with_or_set_mark(K("C-right")),
-    # Undo
-    # K("C-slash"): [K("C-y"), set_mark(False)],
-    # Cancel
-    # K("C-g"): [K("esc"), set_mark(False)],
-    # C-x YYY
-    # K("C-x"): {
-        # # C-x h (select all)
-        # K("h"): [K("C-home"), K("C-a"), set_mark(True)],
-        # # C-x C-f (open)
-        # K("C-f"): K("C-o"),
-        # # C-x C-s (save)
-        # K("C-s"): K("C-s"),
-        # # C-x k (kill tab)
-        # K("k"): K("C-f4"),
-        # # C-x C-c (exit)
-        # K("C-c"): K("C-q"),
-        # # cancel
-        # K("C-g"): pass_through_key,
-        # # C-x u (undo)
-        # K("u"): [K("C-y"), set_mark(False)],
-    # }
 }, "Basic emacs keys etc")
 
 
-define_keymap(lambda wm_class: wm_class not in ("discord", "jetbrains-webstorm", "jetbrains-clion", "jetbrains-pycharm", "jetbrains-dataspell", "jetbrains-idea"), {
+define_keymap(lambda wm_class: wm_class not in ("discord", "jetbrains-webstorm", "jetbrains-clion", "jetbrains-pycharm", "jetbrains-dataspell", "jetbrains-idea", "nheko"), {
     # Kill line
     K("C-k"): [K("Shift-end"), K("C-x"), set_mark(False)],
 })
+
 # other emacs like
-define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt", "konsole", "cool-retro-term", "discord", "jetbrains-webstorm", "jetbrains-clion", "jetbrains-pycharm", "jetbrains-dataspell", "jetbrains-idea", "Gimp-2.10", "obsidian"), {
+define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt", "konsole", "cool-retro-term", "discord", "jetbrains-webstorm", "jetbrains-clion", "jetbrains-pycharm", "jetbrains-dataspell", "jetbrains-idea", "Gimp-2.10", "obsidian", "nheko"), {
     # Beginning/End of file
     K("M-Shift-comma"): with_mark(K("C-home")),
     K("M-Shift-dot"): with_mark(K("C-end")),
-    # Search
-    # K("C-s"): K("F3"),
-    # K("C-r"): K("Shift-F3"),
-    K("M-Shift-key_5"): K("C-h"),
 }, "Emacs-like keys")
 
 define_keymap(lambda wm_class: wm_class not in ("Emacs", "konsole", "cool-retro-term", "jetbrains-webstorm", "jetbrains-clion", "jetbrains-pycharm", "jetbrains-dataspell", "jetbrains-idea"),  {
     K("C-j"): K("F6")
 })
 
+define_keymap(re.compile("nheko"), {
+    K("M-j"): K("C-down"),
+    K("M-k"): K("C-up"),
+})
+
 # discord mappings
-define_keymap(re.compile("discord"), {
+define_keymap(re.compile("discord"), {# {{{
     # Navigate servers
     K("M-Shift-j"): K("C-M-down"),
     K("M-Shift-k"): K("C-M-up"),
@@ -177,4 +136,4 @@ define_keymap(re.compile("discord"), {
         # cancel
         K("C-g"): pass_through_key,
     }
-})
+})# }}}
