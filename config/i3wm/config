@@ -40,7 +40,8 @@ bindsym $mod+Shift+a exec "flameshot screen -c -p $HOME/Pictures/screenshots"
 # start rofi
 bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,ssh -show combi"
 bindsym $mod+space exec --no-startup-id "rofi -show window"
-bindsym $mod+m exec --no-startup-id "=" # rofi/dmenu calculator https://github.com/barbuk/menu-qalc
+# rofi/dmenu calculator https://github.com/barbuk/menu-qalc
+bindsym $mod+m exec --no-startup-id "=" 
 bindsym $mod+i exec --no-startup-id "rofimoji -f alchemical_symbols emojis braille_patterns box_drawing chess_symbols emoticons geometric_shapes gothic greek_extended math mathematical_alphanumeric_symbols mathematical_operators miscellaneous_symbols miscellaneous_mathematical_symbols-a miscellaneous_mathematical_symbols-b miscellaneous_symbols_and_arrows miscellaneous_symbols_and_pictographs miscellaneous_technical modi modifier_tone_letters musical_symbols nerd_font number_forms shorthand_format_controls specials variation_selectors vertical_forms -a copy"
 
 # change focus
@@ -185,7 +186,7 @@ client.urgent			#cc241d	#9d0006	#ebdbb2	#fb4934		#7c6f64
 client.placeholder		#00ff00	#1d2021	#928374	#00ff00		#3c3836
 client.background		#1d2021
 
-for_window [class="^.*"] border pixel 2.5
+for_window [class="^.*"] border pixel 2
 
 gaps top 24
 gaps inner 15
