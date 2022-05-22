@@ -14,8 +14,8 @@
       force: true
     ~/.config:
       recursive: true
-#- shell:
-  #- [paru -S --skipreview --noconfirm i3-gaps i3lock-fancy-git picom-jonaburg-git rofi rofimoji menu-qalc neovim volumeicon mate-power-manager feh xorg-xinput dunst nheko flameshot tesseract tesseract-data-deu tesseract-data-eng tesseract-data-fra tesseract-data-osd tesseract-data-spa imagemagick xclip polybar-git zsh rust discord betterdiscordctl lolcat sl neofetch evince kitty libreoffice-fresh librewolf-bin vivaldi vivaldi-ffmpeg-codecs vlc zip unzip jre-openjdk jre11-openjdk jre8-openjdk tar]
+- shell:
+  - [paru -S --skipreview --noconfirm i3-gaps i3lock-fancy-git picom-jonaburg-git rofi rofimoji menu-qalc neovim volumeicon mate-power-manager feh xorg-xinput dunst nheko flameshot tesseract tesseract-data-deu tesseract-data-eng tesseract-data-fra tesseract-data-osd tesseract-data-spa imagemagick xclip polybar-git zsh rust discord betterdiscordctl lolcat sl neofetch evince kitty libreoffice-fresh librewolf-bin vivaldi vivaldi-ffmpeg-codecs vlc zip unzip jre-openjdk jre11-openjdk jre8-openjdk tar lxdm]
 - link:
     ~/.config/nvim:
       path: config/nvim
