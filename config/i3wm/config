@@ -32,14 +32,15 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 
 # screenshot tools
-bindsym $mod+t exec "$HOME/dotfiles/config/i3wm/text_screenshot.sh"
+bindsym $mod+t exec "$HOME/dotfiles/config/ocr-screenshotting/text_screenshot.sh"
 bindsym $mod+s exec "flameshot gui -c -p $HOME/Pictures/screenshots"
 bindsym $mod+Shift+w exec "$HOME/dotfiles/config/i3wm/window_screenshot_flameshot.sh"
 bindsym $mod+Shift+a exec "flameshot screen -c -p $HOME/Pictures/screenshots"
 
 # start rofi
-bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,ssh -show combi"
-bindsym $mod+space exec --no-startup-id "rofi -show window"
+bindsym $mod+d exec --no-startup-id "rofi -theme $HOME/dotfiles/config/rofi/applauncher.rasi -show drun -drun-display-format {name}"
+bindsym $mod+space exec --no-startup-id "rofi -theme $HOME/dotfiles/config/rofi/applauncher.rasi -show window"
+#bindsym $mod+space exec --no-startup-id "rofi -show window"
 # rofi/dmenu calculator https://github.com/barbuk/menu-qalc
 bindsym $mod+m exec --no-startup-id "=" 
 bindsym $mod+i exec --no-startup-id "rofimoji -f alchemical_symbols emojis braille_patterns box_drawing chess_symbols emoticons geometric_shapes gothic greek_extended math mathematical_alphanumeric_symbols mathematical_operators miscellaneous_symbols miscellaneous_mathematical_symbols-a miscellaneous_mathematical_symbols-b miscellaneous_symbols_and_arrows miscellaneous_symbols_and_pictographs miscellaneous_technical modi modifier_tone_letters musical_symbols nerd_font number_forms shorthand_format_controls specials variation_selectors vertical_forms -a copy"
@@ -165,7 +166,7 @@ exec_always --no-startup-id 'xinput set-prop "bcm5974" "libinput Click Method En
 # notification daemon, discord etc break without it
 exec_always --no-startup-id "/usr/bin/dunst &"
 
-focus_follows_mouse yes
+focus_follows_mouse no
 
 hide_edge_borders smart
 

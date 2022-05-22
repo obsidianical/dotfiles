@@ -61,7 +61,12 @@ alias cf="cargo fmt"
 alias cfx="cargo fix"
 alias cl="cargo clippy"
 alias cbr="cargo build --release"
+
+# drive mounting
 alias msda1="sudo mount /dev/sda1 /mnt/portable-mass-storage"
+
+# fucking around
+alias ="nvim"
 
 # file endings
 alias -s {pdf,PDF}="evince"

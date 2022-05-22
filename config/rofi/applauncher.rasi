@@ -1,0 +1,76 @@
+* {
+	background-color: #282828;
+	text-color:       #ebdbb2;
+}
+
+
+window {
+	width:  1024px; 
+	background-color: #1d2021;
+}
+
+mainbox {
+	spacing: 0px;
+	children: [inputbar,listview];
+}
+
+element {
+	background: #1d2021;
+	children: [ element-icon, element-text ];
+}
+element,element-text,element-icon, button {
+    cursor: pointer;
+}
+
+inputbar {
+	margin: 0px 0px 0.5em 0em;
+	spacing: 0.4em;
+	background-color: #1d2021;
+	children: [entry,overlay];
+}
+
+listview, inputbar, message {
+	columns: 5;
+	lines:   3;
+}
+
+listview {
+	padding: 20px;
+}
+
+
+element {
+    border:  0;
+    padding:      10px;
+    font:         "Mono 8";
+    orientation: vertical;
+	border-radius: 10px;
+}
+
+element-icon {
+	padding: 1.5em 1.5em 0.5em;
+	size: 4.5em;
+}
+
+element selected {
+	background-color: #1d2021;
+}
+
+element-text {
+	padding: 0 0 7px 0;
+}
+
+element-text selected, element-icon selected {
+	background-color: #1d2021;
+}
+
+element-text, element-icon {
+	font-size: 2em;
+	font:             "Montserrat"; 
+	horizontal-align: 0.5;
+}
+
+entry {
+	padding: 15px;
+	background-color: #1d2021;
+}

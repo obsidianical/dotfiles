@@ -58,13 +58,13 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "konsole", "cool-retro-
 }, "Basic emacs keys etc")
 
 
-define_keymap(lambda wm_class: wm_class not in ("discord", "jetbrains-webstorm", "jetbrains-clion", "jetbrains-pycharm", "jetbrains-dataspell", "jetbrains-idea", "nheko"), {
+define_keymap(lambda wm_class: wm_class not in ("discord", "jetbrains-webstorm", "jetbrains-clion", "jetbrains-pycharm", "jetbrains-dataspell", "jetbrains-idea", "nheko", "Signal"), {
     # Kill line
     K("C-k"): [K("Shift-end"), K("C-x"), set_mark(False)],
 })
 
 # other emacs like
-define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt", "konsole", "cool-retro-term", "discord", "jetbrains-webstorm", "jetbrains-clion", "jetbrains-pycharm", "jetbrains-dataspell", "jetbrains-idea", "Gimp-2.10", "obsidian", "nheko"), {
+define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt", "konsole", "cool-retro-term", "discord", "jetbrains-webstorm", "jetbrains-clion", "jetbrains-pycharm", "jetbrains-dataspell", "jetbrains-idea", "Gimp-2.10", "obsidian", "nheko", "Signal"), {
     # Beginning/End of file
     K("M-Shift-comma"): with_mark(K("C-home")),
     K("M-Shift-dot"): with_mark(K("C-end")),
@@ -77,6 +77,12 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "konsole", "cool-retro-
 define_keymap(re.compile("nheko"), {
     K("M-j"): K("C-down"),
     K("M-k"): K("C-up"),
+})
+
+define_keymap(re.compile("Signal"), {
+    K("C-k"): K("C-t"),
+    K("M-k"): K("M-up"),
+    K("M-j"): K("M-down"),
 })
 
 # discord mappings
