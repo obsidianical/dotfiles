@@ -37,7 +37,7 @@ define_keymap(re.compile("Firefox|Google-chrome|LibreWolf|Chromium"), {
 }, "Firefox and Chrome")
 
 #basic emacs
-define_keymap(lambda wm_class: wm_class not in ("Emacs", "konsole", "cool-retro-term", "kitty", "jetbrains-webstorm", "jetbrains-clion", "jetbrains-pycharm", "jetbrains-dataspell", "jetbrains-idea", "Gimp-2.10", "obsidian"), {
+define_keymap(lambda wm_class: wm_class not in ("Emacs", "konsole", "cool-retro-term", "kitty", "jetbrains-webstorm", "jetbrains-clion", "jetbrains-pycharm", "jetbrains-dataspell", "jetbrains-idea", "Gimp-2.10", "obsidian", "gw2-64.exe"), {
     # Cursor
     K("C-b"): with_mark(K("left")),
     K("C-f"): with_mark(K("right")),
@@ -58,7 +58,7 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "konsole", "cool-retro-
 }, "Basic emacs keys etc")
 
 
-define_keymap(lambda wm_class: wm_class not in ("discord", "jetbrains-webstorm", "jetbrains-clion", "jetbrains-pycharm", "jetbrains-dataspell", "jetbrains-idea", "nheko", "Signal"), {
+define_keymap(lambda wm_class: wm_class not in ("discord", "jetbrains-webstorm", "jetbrains-clion", "jetbrains-pycharm", "jetbrains-dataspell", "jetbrains-idea", "nheko", "Signal", "gw2-64.exe"), {
     # Kill line
     K("C-k"): [K("Shift-end"), K("C-x"), set_mark(False)],
 })
@@ -70,7 +70,7 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt", "konsole", "co
     K("M-Shift-dot"): with_mark(K("C-end")),
 }, "Emacs-like keys")
 
-define_keymap(lambda wm_class: wm_class not in ("Emacs", "konsole", "cool-retro-term", "jetbrains-webstorm", "jetbrains-clion", "jetbrains-pycharm", "jetbrains-dataspell", "jetbrains-idea"),  {
+define_keymap(lambda wm_class: wm_class not in ("Emacs", "konsole", "cool-retro-term", "jetbrains-webstorm", "jetbrains-clion", "jetbrains-pycharm", "jetbrains-dataspell", "jetbrains-idea", "gw2-64.exe"),  {
     K("C-j"): K("F6")
 })
 
