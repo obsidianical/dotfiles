@@ -12,9 +12,9 @@ trap "rm $tmp_img*" EXIT
 echo $selection_menu1
 
 case $selection_menu1 in
-	"eng"|"deu"|"spa"|"osd")
+	"eng"|"deu"|"spa"|"osd"|"fra")
 		tesseract_lang=$selection_menu1
-		flameshot gui -p $tmp_img.png
+		flameshot gui -p $tmp_img.png -d 100
 		mogrify -modulate 100,0 -resize 400% $tmp_img.png
 		;;
 	"exit")
