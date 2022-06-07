@@ -12,9 +12,14 @@ compinit
 # End of lines added by compinstall
 
 export TMUX_AUTOSTART=false
-# zgenom
-source "${HOME}/.zgenom/zgenom.zsh"
 
+# zgenom
+if [ -d "${HOME}/.zgenom" ]; then
+	source "${HOME}/.zgenom/zgenom.zsh"
+else
+	git clone https://github.com/jandamm/zgenom.git "${HOME}/.zgenom"
+	source "${HOME}/.zgenom/zgenom.zsh"
+fi
 if ! zgenom saved; then
   zgenom ohmyzsh
   zgenom ohmyzsh plugins/git
@@ -68,6 +73,10 @@ alias msda1="sudo mount /dev/sda1 /mnt/portable-mass-storage"
 
 # fucking around
 alias ="nvim"
+
+# nix
+alias nixconf="sudo nvim /etc/nixos/configuration.nix"
+alias nixrb="sudo nixos-rebuild switch"
 
 # file endings
 alias -s {pdf,PDF}="evince"

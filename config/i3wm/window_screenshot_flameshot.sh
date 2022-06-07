@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Get the coordinates of the active window's
 #    top-left corner, and the window's size.
 #    This excludes the window decoration.

@@ -7,10 +7,10 @@ case $selection in
 		i3lock-fancy
 		;;
 	"log out")
-		killall i3
+		pkill i3
 		;;
 	"toggle picom")
-		killall picom || picom --experimental-backend -b
+		pkill picom || picom --experimental-backend -b
 		;;
 	"shut down")
 		shutdown now

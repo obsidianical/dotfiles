@@ -1,6 +1,5 @@
-#!/bin/bash
+#!/bin/sh
 
-langs="eng deu spa osd"
 langs=$(tesseract --list-langs | tail +2)
 first_menu="$langs exit"
 selection_menu1=$(echo $first_menu | rofi -sep " " -dmenu)

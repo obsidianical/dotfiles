@@ -19,4 +19,5 @@ configuration {
 //@theme "/usr/share/rofi/themes/iggy.rasi"
 //@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
 //@theme "/usr/share/rofi/themes/iggy.rasi"
-@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
+//@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
+@theme "/nix/store/6x1zx27fqmxyh7ldnw5w9w0gg9x698vh-rofi-1.7.3/share/rofi/themes/gruvbox-dark.rasi"

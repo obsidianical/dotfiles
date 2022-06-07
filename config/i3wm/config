@@ -13,10 +13,8 @@ set $mod Mod4
 font pango:Monsterrat 8
 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id nm-applet
-exec picom --experimental-backend
 
-set $refresh_i3status killall -SIGUSR1 i3status
+set $refresh_i3status pkill -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
@@ -25,10 +23,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
 bindsym $mod+Return exec kitty
 
-# kill focused window
 bindsym $mod+Shift+q kill
 
 # screenshot tools
@@ -45,54 +41,29 @@ bindsym $mod+space exec --no-startup-id "rofi -theme $HOME/dotfiles/config/rofi/
 bindsym $mod+m exec --no-startup-id "=" 
 bindsym $mod+i exec --no-startup-id "rofimoji -f alchemical_symbols emojis braille_patterns box_drawing chess_symbols emoticons geometric_shapes gothic greek_extended math mathematical_alphanumeric_symbols mathematical_operators miscellaneous_symbols miscellaneous_mathematical_symbols-a miscellaneous_mathematical_symbols-b miscellaneous_symbols_and_arrows miscellaneous_symbols_and_pictographs miscellaneous_technical modi modifier_tone_letters musical_symbols nerd_font number_forms shorthand_format_controls specials variation_selectors vertical_forms -a copy"
 
-# change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-# move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# split
 bindsym $mod+shift+semicolon split h
 bindsym $mod+semicolon  split v
 
-
-# enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-#bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
-# focus the parent container
 bindsym $mod+a focus parent
-
-# focus the child container
 bindsym $mod+c focus child
 
-set $ws1 "1: Comms"
-set $ws2 "2: Browser"
+set $ws1 "1"
+set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
@@ -147,38 +118,34 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+exec picom --experimental-backend
+exec_always --no-startup-id "pkill polybar ; polybar"
 exec_always "xkeysnail $HOME/dotfiles/config/xkeysnail/xkeysnail-cfg.py"
 exec_always "sleep 4 && setxkbmap -layout us -variant altgr-intl"
-exec "volumeicon &"
-exec "mate-power-manager &"
-exec "nm-applet"
+exec_always "pkill volumeicon ; volumeicon"
+exec_always --no-startup-id "/usr/bin/dunst &"
+exec_always "nm-applet"
 
+# autostarts apparently
 exec "dapper -sue $HOME/.config/autostart"
 
-exec_always --no-startup-id "killall polybar ; polybar"
-
-exec_always --no-startup-id "$HOME/Documents/repos/i3-autodisplay/i3-autodisplay &"
+# wallpaper
 exec_always --no-startup-id "feh --bg-scale ~/Pictures/wallpaper.jpg &"
 
-# Only for main pc, hopefully doesnt break stuff on other devices...
+# fixes touchpad
 exec_always --no-startup-id 'xinput set-prop "bcm5974" "libinput Tapping Enabled" 1'
 exec_always --no-startup-id 'xinput set-prop "bcm5974" "libinput Click Method Enabled" 0, 1'
 
-# notification daemon, discord etc break without it
-exec_always --no-startup-id "/usr/bin/dunst &"
-
-focus_follows_mouse no
-
-hide_edge_borders smart
-
 # go back with same key of workspace
 workspace_auto_back_and_forth yes
+
+focus_follows_mouse no
+hide_edge_borders smart
 
 # assign windows to workspaces
 assign [class="discord"] $ws1
 assign [class="nheko"] $ws1
 assign [class="librewolf"] $ws2
-assign [class="vivaldi-stable"] $ws2
 
 # color theme
 # class					border	backgr.	text	indicator	child_border
