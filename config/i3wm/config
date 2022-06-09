@@ -31,6 +31,12 @@ bindsym $mod+Return exec kitty
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# macros
+bindsym $mod+q exec "$HOME/dotfiles/config/xmacro/record.sh"
+bindsym $mod+p exec "$HOME/dotfiles/config/xmacro/play.sh"
+bindsym $homd+Shift+p "$HOME/dotfiles/config/xmacro/play_count.sh"
+
+
 # screenshot tools
 bindsym $mod+t exec "$HOME/dotfiles/config/ocr-screenshotting/text_screenshot.sh"
 bindsym $mod+s exec "flameshot gui -c -p $HOME/Pictures/screenshots"
