@@ -34,7 +34,7 @@ bindsym $mod+Shift+q kill
 # macros
 bindsym $mod+q exec "$HOME/dotfiles/config/xmacro/record.sh"
 bindsym $mod+p exec "$HOME/dotfiles/config/xmacro/play.sh"
-bindsym $homd+Shift+p "$HOME/dotfiles/config/xmacro/play_count.sh"
+bindsym $mod+Shift+p exec "$HOME/dotfiles/config/xmacro/play_count.sh"
 
 
 # screenshot tools
