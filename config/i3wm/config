@@ -118,12 +118,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-exec picom --experimental-backend
 exec_always --no-startup-id "pkill polybar ; polybar"
+exec "xhost +"
 exec_always "xkeysnail $HOME/dotfiles/config/xkeysnail/xkeysnail-cfg.py"
 exec_always "sleep 4 && setxkbmap -layout us -variant altgr-intl"
 exec_always "pkill volumeicon ; volumeicon"
 exec_always --no-startup-id "/usr/bin/dunst &"
+exec picom --experimental-backend
 exec_always "nm-applet"
 
 # autostarts apparently
@@ -158,5 +159,5 @@ client.background		#1d2021
 
 for_window [class="^.*"] border pixel 2
 
-gaps top 24
+# gaps top 24
 gaps inner 15

@@ -47,7 +47,7 @@ alias lock='i3lock-fancy'
 alias termsize='echo "width: $(tput cols)\nheight: $(tput lines)"'
 alias batstate='echo "Charge state: $(cat /sys/class/power_supply/BAT0/capacity)%"'
 alias clear='clear;neofetch'
-alias bdin="betterdiscordctl install && killall Discord && Discord & disown"
+alias bdin="betterdiscordctl install && pkill discord && discord & disown"
 alias upg='paru -Syu --skipreview --noconfirm && flatpak upgrade && rustup upgrade'
 
 alias grepo="cd $HOME/Documents/repos && ls"
